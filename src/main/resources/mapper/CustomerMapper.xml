@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goldcard.spring_boot_redis_demo.mapper.CustomerMapper">
+    <select id="getCustomer" parameterType="long" resultType="customer">
+        select id, name , note from t_customer where id = #{id}
+    </select>
+
+    <!--useGeneratedKeys keyProperty 在插入之后使用数据库生成机制回填对象主键 -->
+    <insert id="insertCustomer" useGeneratedKeys="true" keyProperty="id">
+        insert into t_customer(name,note) VALUES (#{name},#{note})
+    </insert>
+</mapper>
